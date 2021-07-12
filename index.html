@@ -1,0 +1,62 @@
+<!-- Alunos: Guilherme Lima Vieira da Silva -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <!--Tailwind CSS-->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <title>Dashboard Covid Status</title>
+</head>
+<body>
+  <div class="navbar w-100 bg-indigo-800">
+    <div class="ul">
+      <li class="text-white"><a href="index.html">Home</a></li>
+      <li class="text-white"><a href="pages/country.html">País</a></li>
+    </div>
+  </div>
+  <main>
+    <div class="dashboard-main-content w-100 h-100 bg-indigo-600 flex justify-center items-center">
+      <div class="container">
+        <h1 class="text-white text-5xl mb-20 uppercase">Covid Dashboard</h1>
+        <div class="row flex">
+          <div class="card bg-gray-50 mb-10 mr-5 w-1/2 rounded-md shadow kpis flex flex-col justify-center items-center">
+            <div class="total-confirmed bg-pink-600 rounded-md w-9/12 flex flex-col justify-center items-center m-5 p-5">
+              <h3>Total Confirmados</h3>
+              <span class="total-confirmed-value">0</span>
+            </div>
+            <div class="total-deaths bg-pink-600 rounded-md w-9/12 flex flex-col justify-center items-center m-5 p-5">
+              <h3>Total Mortes</h3>
+              <span class="total-deaths-value">0</span>
+            </div>
+            <div class="total-recovered bg-pink-600 rounded-md w-9/12 flex flex-col justify-center items-center m-5 mb-0 p-5">
+              <h3>Total Recuperados</h3>
+              <span class="total-recovered-value">0</span>
+            </div>
+          </div>
+          <div class="card bg-gray-50 mb-10 ml-5 w-1/2 rounded-md shadow pizza flex flex-col justify-center items-center">
+            <h2>Distribuição de Novos Casos</h2>
+            <canvas id="pizzaGraph" width="500px" height="500px"></canvas>
+          </div>
+        </div>
+          <div class="card bg-gray-50 w-100 rounded-md shadow bars mb-10 flex flex-col justify-center items-center">
+            <h2>Total de Mortes por país - Top 10</h2>
+            <canvas id="barGraph" width="1300px" height="500px"></canvas>
+          </div>
+      </div>
+    </div>
+  </main>
+
+  <!--Axios-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!--Chart JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js" integrity="sha512-5vwN8yor2fFT9pgPS9p9R7AszYaNn0LkQElTXIsZFCL7ucT8zDCAqlQXDdaqgA1mZP47hdvztBMsIoFxq/FyyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!--Lodash-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!--Main JS-->
+  <script src="js/main.js"></script>
+</body>
+</html>

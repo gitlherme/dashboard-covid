@@ -1,0 +1,82 @@
+<!-- Alunos: Guilherme Lima Vieira da Silva -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/main.css">
+  <!--Tailwind CSS-->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <title>Dashboard Covid Status</title>
+</head>
+<body>
+  <div class="navbar w-100 bg-indigo-800">
+    <div class="ul">
+      <li class="text-white"><a href="../index.html">Home</a></li>
+      <li class="text-white"><a href="country.html">País</a></li>
+    </div>
+  </div>
+  <main>
+    <div class="dashboard-countries-content w-100 h-full flex justify-center bg-gray-200">
+      <div class="w-full ml-60 mr-60 h-screen flex justify-center items-center">
+        <div class="bg-white h-4/6 mr-5 w-1/5 rounded-md shadow-xl filters">
+          <div class="date-start">
+            <h2>Data de Início</h2>
+            <input type="date" name="Data de Início" id="date-start">
+          </div>
+          <div class="date-end">
+            <h2>Data de Fim</h2>
+            <input type="date" name="Data de Fim" id="date-end">
+          </div>
+          <div class="country w-100">
+            <h2>País</h2>
+            <select name="countries" id="selectCountries" class="w-full">
+              <option value="brazil">Brazil</option>
+            </select>
+          </div>
+          <div class="data w-100">
+            <h2>Dados</h2>
+            <select name="data" id="selectData" class="w-full">
+              <option value="confirmed">Número de Casos Confirmados</option>
+              <option value="deaths">Número de Óbitos</option>
+              <option value="recovered">Número de Casos Recuperados</option>
+            </select>
+          </div>
+          <button id="applyFilters">Aplicar</button>
+        </div>
+        <div class="bg-white h-4/6 ml-5 w-4/5 rounded-md shadow-xl row">
+          <div class="diary flex flex-col items-center">
+            <h2 class="diary-title">Curva diária de casos de Covid</h2>
+            <canvas id="lineChart" width="800px" height="500px"></canvas>
+          </div>
+          <div class="kpis flex w-full justify-center items-center">
+            <div class="total-confirmed flex flex-col justify-center items-center m-5 p-3 rounded-md bg-indigo-800 text-white">
+              <div class="total-confirmed-title">Total de confirmados</div>
+              <span class="total-confirmed-value">0</span>
+            </div>
+            <div class="total-deaths flex flex-col justify-center items-center m-5 p-3 rounded-md bg-indigo-800 text-white">
+              <div class="total-deaths-title">Total de mortes</div>
+              <span class="total-deaths-value">0</span>
+            </div>
+            <div class="total-recovered flex flex-col justify-center items-center m-5 p-3 rounded-md bg-indigo-800 text-white">
+              <div class="total-recovered-title">Total de recuperados</div>
+              <span class="total-recovered-value">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--Axios-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!--Chart JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js" integrity="sha512-5vwN8yor2fFT9pgPS9p9R7AszYaNn0LkQElTXIsZFCL7ucT8zDCAqlQXDdaqgA1mZP47hdvztBMsIoFxq/FyyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!--Lodash-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!--Main JS-->
+  <script src="../js/main.js"></script>
+</body>
+</html>
