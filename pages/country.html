@@ -11,55 +11,55 @@
   <title>Dashboard Covid Status</title>
 </head>
 <body>
-  <div class="navbar w-100 bg-indigo-800">
-    <div class="ul">
-      <li class="text-white"><a href="../index.html">Home</a></li>
-      <li class="text-white"><a href="country.html">País</a></li>
+  <div class="navbar w-100 bg-indigo-800 flex justify-center">
+    <div class="ul flex container list-none pt-5 pb-5">
+      <li class="text-white mr-10"><a class="text-lg text-extrabold uppercase hover:text-pink-600" href="../index.html">Home</a></li>
+      <li class="text-white mr-10"><a class="text-lg text-extrabold uppercase hover:text-pink-600" href="country.html">País</a></li>
     </div>
   </div>
   <main>
     <div class="dashboard-countries-content w-100 h-full flex justify-center bg-gray-200">
       <div class="w-full ml-60 mr-60 h-screen flex justify-center items-center">
-        <div class="bg-white h-4/6 mr-5 w-1/5 rounded-md shadow-xl filters">
-          <div class="date-start">
-            <h2>Data de Início</h2>
-            <input type="date" name="Data de Início" id="date-start">
+        <div class="bg-white h-5/6 mr-5 w-1/5 rounded-md shadow-xl filters p-10 flex flex-col">
+          <div class="date-start mb-5">
+            <h2 class="font-bold uppercase">Data de Início</h2>
+            <input  class="border-solid border-b-2 w-full border-indigo-600" type="date" name="Data de Início" id="date-start">
           </div>
-          <div class="date-end">
-            <h2>Data de Fim</h2>
-            <input type="date" name="Data de Fim" id="date-end">
+          <div class="date-end mb-5">
+            <h2 class="font-bold uppercase">Data de Fim</h2>
+            <input  class="border-solid border-b-2 w-full border-indigo-600" type="date" name="Data de Fim" id="date-end">
           </div>
-          <div class="country w-100">
-            <h2>País</h2>
-            <select name="countries" id="selectCountries" class="w-full">
+          <div class="country w-100 mb-5">
+            <h2 class="font-bold uppercase">País</h2>
+            <select class="border-solid border-b-2 w-full border-indigo-600"  name="countries" id="selectCountries" class="w-full">
               <option value="brazil">Brazil</option>
             </select>
           </div>
-          <div class="data w-100">
-            <h2>Dados</h2>
-            <select name="data" id="selectData" class="w-full">
+          <div class="data w-100 mb-5">
+            <h2 class="font-bold uppercase">Dados</h2>
+            <select class="border-solid border-b-2 w-full border-indigo-600"  name="data" id="selectData" class="w-full">
               <option value="confirmed">Número de Casos Confirmados</option>
               <option value="deaths">Número de Óbitos</option>
               <option value="recovered">Número de Casos Recuperados</option>
             </select>
           </div>
-          <button id="applyFilters">Aplicar</button>
+          <button id="applyFilters" class="rounded-lg bg-indigo-600 text-white font-bold pt-3 pb-3 pl-10 pr-10 mt-5">Aplicar</button>
         </div>
-        <div class="bg-white h-4/6 ml-5 w-4/5 rounded-md shadow-xl row">
+        <div class="bg-white h-5/6 ml-5 w-4/5 rounded-md shadow-xl row flex flex-col justify-center items-center">
           <div class="diary flex flex-col items-center">
-            <h2 class="diary-title">Curva diária de casos de Covid</h2>
-            <canvas id="lineChart" width="800px" height="500px"></canvas>
+            <h2 class="diary-title text-xl uppercase mb-10">Curva diária de casos de Covid</h2>
+            <canvas id="lineChart" width="700px" height="500px"></canvas>
           </div>
           <div class="kpis flex w-full justify-center items-center">
-            <div class="total-confirmed flex flex-col justify-center items-center m-5 p-3 rounded-md bg-indigo-800 text-white">
+            <div class="total-confirmed flex flex-col justify-center items-center m-5 p-2 rounded-md bg-indigo-800 text-white">
               <div class="total-confirmed-title">Total de confirmados</div>
               <span class="total-confirmed-value">0</span>
             </div>
-            <div class="total-deaths flex flex-col justify-center items-center m-5 p-3 rounded-md bg-indigo-800 text-white">
+            <div class="total-deaths flex flex-col justify-center items-center m-5 p-2 rounded-md bg-indigo-800 text-white">
               <div class="total-deaths-title">Total de mortes</div>
               <span class="total-deaths-value">0</span>
             </div>
-            <div class="total-recovered flex flex-col justify-center items-center m-5 p-3 rounded-md bg-indigo-800 text-white">
+            <div class="total-recovered flex flex-col justify-center items-center m-5 p-2 rounded-md bg-indigo-800 text-white">
               <div class="total-recovered-title">Total de recuperados</div>
               <span class="total-recovered-value">0</span>
             </div>

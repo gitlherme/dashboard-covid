@@ -11,16 +11,16 @@
   <title>Dashboard Covid Status</title>
 </head>
 <body>
-  <div class="navbar w-100 bg-indigo-800">
-    <div class="ul">
-      <li class="text-white"><a href="index.html">Home</a></li>
-      <li class="text-white"><a href="pages/country.html">País</a></li>
+  <div class="navbar w-100 bg-indigo-800 flex justify-center">
+    <div class="ul flex container list-none pt-5 pb-5">
+      <li class="text-white mr-10"><a class="text-lg text-extrabold uppercase hover:text-pink-600" href="index.html">Home</a></li>
+      <li class="text-white mr-10"><a class="text-lg text-extrabold uppercase hover:text-pink-600" href="pages/country.html">País</a></li>
     </div>
   </div>
   <main>
     <div class="dashboard-main-content w-100 h-100 bg-indigo-600 flex justify-center items-center">
       <div class="container">
-        <h1 class="text-white text-5xl mb-20 uppercase">Covid Dashboard</h1>
+        <h1 class="text-white text-5xl mb-10 mt-10 uppercase">Covid Dashboard</h1>
         <div class="row flex">
           <div class="card bg-gray-50 mb-10 mr-5 w-1/2 rounded-md shadow kpis flex flex-col justify-center items-center">
             <div class="total-confirmed bg-pink-600 rounded-md w-9/12 flex flex-col justify-center items-center m-5 p-5">
@@ -37,13 +37,13 @@
             </div>
           </div>
           <div class="card bg-gray-50 mb-10 ml-5 w-1/2 rounded-md shadow pizza flex flex-col justify-center items-center">
-            <h2>Distribuição de Novos Casos</h2>
-            <canvas id="pizzaGraph" width="500px" height="500px"></canvas>
+            <h2 class="mt-5 mb-5">Distribuição de Novos Casos</h2>
+            <canvas id="pizzaGraph" class="mt-5 mb-5" width="500px" height="500px"></canvas>
           </div>
         </div>
           <div class="card bg-gray-50 w-100 rounded-md shadow bars mb-10 flex flex-col justify-center items-center">
-            <h2>Total de Mortes por país - Top 10</h2>
-            <canvas id="barGraph" width="1300px" height="500px"></canvas>
+            <h2 class="mt-5 mb-5">Total de Mortes por país - Top 10</h2>
+            <canvas id="barGraph" class="mt-5 mb-5" width="1300px" height="500px"></canvas>
           </div>
       </div>
     </div>

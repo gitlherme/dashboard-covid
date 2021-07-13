@@ -1,2 +1,9 @@
-@import 'components';
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Inter:wght@900&display=swap');
 
+h1, h2, h3, a {
+  font-family: 'Inter', sans-serif;
+}
+
+p, span {
+  font-family: 'DM Sans', sans-serif;
+}

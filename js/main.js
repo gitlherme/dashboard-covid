@@ -14,15 +14,7 @@ function init() {
   if(document.querySelector('.dashboard-main-content')) {
     getGlobalStatus();
   } else {
-    let today = new Date();
-    let yesterday = new Date(today.getTime());
-    yesterday.setDate(today.getDate() - 1);
-    let beforeYesterday = new Date(today.getTime());
-    beforeYesterday.setDate(today.getDate() - 2);
-    dateStart.value = beforeYesterday.toISOString().substr(0, 10);
-    dateEnd.value = yesterday.toISOString().substr(0, 10);
-
-
+    generateDate();
     getCountries();
     getCountryStatus(selectItemCountry.value, selectItemData.value);
     applyButton.addEventListener('click', (e) => {
@@ -31,6 +23,16 @@ function init() {
       getCountryStatus(selectItemCountry.value, selectItemData.value);
     })
   }
+}
+
+function generateDate() {
+  let today = new Date();
+  let yesterday = new Date(today.getTime());
+  yesterday.setDate(today.getDate() - 1);
+  let beforeYesterday = new Date(today.getTime());
+  beforeYesterday.setDate(today.getDate() - 2);
+  dateStart.value = beforeYesterday.toISOString().substr(0, 10);
+  dateEnd.value = yesterday.toISOString().substr(0, 10);
 }
 
 async function getSummary() {
@@ -73,7 +75,7 @@ async function getCountryStatus(country, whichData) {
       } else {
         dataDaily.push({ date: item.date, data: item.data });
       }
-    })
+    });
     dataDaily.shift();  
   } else if (whichData == 'deaths') {
     data.forEach((item) => dataArray.push({date: item.Date, data: item.Deaths}));
@@ -97,7 +99,7 @@ async function getCountryStatus(country, whichData) {
     dataDaily.shift();  
   }
 
-  drawCountriesDashboard(dataDaily, whichData);
+  drawCountriesDashboard(dataDaily, data, whichData);
 }
 
 async function getMostDeathsByCountries() {
@@ -185,7 +187,7 @@ async function drawGlobalDashboard(data) {
   
 }
 
-async function drawCountriesDashboard(data, scope) {
+async function drawCountriesDashboard(data, kpiData, scope) {
   const labels = [];
   const allDataValues = [];
   let averageArray = [];
@@ -194,7 +196,7 @@ async function drawCountriesDashboard(data, scope) {
   let secondDatasetLabel = ''
 
   data.forEach((item) => {
-    let formatDate = ((new Date(item.date).getDate() )) + "/" + ((new Date(item.date).getMonth() + 1)) + "/" + new Date(item.date).getFullYear(); 
+    let formatDate = ((new Date(item.date).getDate()  + 1 )) + "/" + ((new Date(item.date).getMonth() + 1)) + "/" + new Date(item.date).getFullYear(); 
     labels.push(formatDate);
     allDataValues.push(item.data);
     averageArray.push(0);
@@ -202,7 +204,6 @@ async function drawCountriesDashboard(data, scope) {
 
   let average = allDataValues.reduce((total, current) => total += current) / allDataValues.length;
   averageArray = averageArray.map((item) => averageArray[averageArray.indexOf(item)] = average);
-  console.log(averageArray);
 
   if(scope == 'confirmed') {
     firstDatasetLabel = 'Número de Casos Confirmados'
@@ -242,4 +243,12 @@ async function drawCountriesDashboard(data, scope) {
   };
 
   lineChart = new Chart(document.getElementById('lineChart'), config);
+
+  const totalConfirmedSpan = document.querySelector('.total-confirmed-value');
+  const totalDeathsSpan = document.querySelector('.total-deaths-value');
+  const totalRecoveredSpan = document.querySelector('.total-recovered-value');
+  
+  totalConfirmedSpan.innerHTML = _.last(kpiData).Confirmed.toLocaleString();
+  totalDeathsSpan.innerHTML = _.last(kpiData).Deaths.toLocaleString();
+  totalRecoveredSpan.innerHTML = _.last(kpiData).Recovered.toLocaleString();
 }
